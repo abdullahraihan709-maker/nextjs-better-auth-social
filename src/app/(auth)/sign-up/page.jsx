@@ -1,7 +1,7 @@
 'use client'
 
 import {Eye, EyeSlash} from "@gravity-ui/icons";
-import { signUp } from "@/lib/auth-client";
+import { signIn, signUp } from "@/lib/auth-client";
 import {Button, Description, FieldError, Form, Input, InputGroup, Label, TextField} from "@heroui/react";
 
 import {useState} from "react";
@@ -32,6 +32,12 @@ const SignUpPage = () => {
     };
     // Sign Up data store in MongoDB functionality end
 
+    const handleGoogleSignIn = async() => {
+        const resData = await signIn.social({
+            provider: 'google'
+        });
+        console.log('after google sign in', resData);
+    };
 
     return (
         <div>
@@ -166,7 +172,10 @@ const SignUpPage = () => {
                     </Button>
                 </div>
             </Form>
-  
+            <br/>
+            <div>
+                    <Button onClick={handleGoogleSignIn} >Sign In with Google</Button>
+            </div>
           
         </div>
     );
