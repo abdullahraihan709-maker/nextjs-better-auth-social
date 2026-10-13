@@ -32,11 +32,20 @@ export default function Navbar() {
           </li>
 
 
-          {/* Functionality Start: Profile will only visible after successful sign-in or sign-up */}
-          {session?.user && <li>
-            <Link href="/profile">Profile</Link>
-          </li>}
-          {/* Functionality End: Profile will only visible after successful sign-in or sign-up */}
+          {/* Functionality Start: Profile and Settings will only be visible after successful sign-in or sign-up */}
+          {session?.user && <> 
+          
+              <li>
+                <Link href="/profile">Profile</Link>
+              </li>
+
+              <li>
+                <Link href="/settings">Settings</Link>
+              </li>
+
+            </>
+          }
+          {/* Functionality End: Profile and Settings will only visible after successful sign-in or sign-up */}
     
     </>
 
