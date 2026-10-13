@@ -23,16 +23,20 @@ export default function Navbar() {
     const links1 = <>
     
           <li>
-            <Link href="#">Features</Link>
+            <Link href="/services">Services</Link>
           </li>
           <li>
-            <Link href="#" className="font-medium text-accent" aria-current="page">
+            <Link href="/dashboard" className="font-medium text-accent" aria-current="page">
               Dashboard
             </Link>
           </li>
-          <li>
-            <Link href="#">Pricing</Link>
-          </li>
+
+
+          {/* Functionality Start: Profile will only visible after successful sign-in or sign-up */}
+          {session?.user && <li>
+            <Link href="/profile">Profile</Link>
+          </li>}
+          {/* Functionality End: Profile will only visible after successful sign-in or sign-up */}
     
     </>
 
@@ -137,7 +141,7 @@ export default function Navbar() {
                 </button>
 
                 <div className="flex items-center gap-3">
-                    <p className="font-bold">ACME</p>
+                    <Link href="/" className="font-bold">ACME</Link>
                 </div>
             </div>
 
