@@ -32,12 +32,24 @@ const SignUpPage = () => {
     };
     // Sign Up data store in MongoDB functionality end
 
+    // Google Sign In Functionality Start
     const handleGoogleSignIn = async() => {
         const resData = await signIn.social({
             provider: 'google'
         });
         console.log('after google sign in', resData);
     };
+    // Google Sign In Functionality End
+
+    // Github Sign In Functionality Start
+    const handleGithubSignIn = async() => {
+        const resData = await signIn.social({
+            provider: 'github'
+        });
+        console.log('after github sign in', resData);
+    };
+    // Github Sign In Functionality End
+
 
     return (
         <div>
@@ -175,6 +187,10 @@ const SignUpPage = () => {
             <br/>
             <div>
                     <Button onClick={handleGoogleSignIn} >Sign In with Google</Button>
+            </div>
+            <br/>
+            <div>
+                    <Button onClick={handleGithubSignIn} >Sign In with GitHub</Button>
             </div>
           
         </div>
