@@ -159,6 +159,8 @@ const SignInPage = () => {
                 </div>
 
             </Form>
+
+            <p><small>Forgot Password? <Link href={"/forgot-password"} className="text-blue-400 underline" >click here</Link> </small></p>
             
         </div>
     );
