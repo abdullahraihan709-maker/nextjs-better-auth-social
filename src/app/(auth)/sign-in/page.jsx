@@ -1,5 +1,7 @@
 'use client'
 
+import Link from "next/link";
+
 import {Eye, EyeSlash} from "@gravity-ui/icons";
 
 import { signIn } from "@/lib/auth-client";

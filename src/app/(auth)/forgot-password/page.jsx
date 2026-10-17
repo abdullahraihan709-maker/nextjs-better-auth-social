@@ -1,17 +1,31 @@
 "use client";
+import { requestPasswordReset } from "@/lib/auth-client";
 import {Check} from "@gravity-ui/icons";
 import {Button, Description, FieldError, Form, Input, Label, TextField} from "@heroui/react";
+import { toast } from "react-toastify";
 
 const ForgotPasswordPage = () => {
     
-    const handleForgotPassword = () => {
+    const handleForgotPassword = async(e) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        const userData = Object.fromEntries(formData.entries());
 
+        console.log('user data before submit', userData)
+
+        const resData = await requestPasswordReset({
+            email: userData.email,
+            redirectTo: '/reset-password',
+        })
+
+        toast.success('An Email is sent to your email address. Please check.')
+        console.log('after sending reset email', resData);
     };
 
     return (
         <div>
             <h2>Forgot Password</h2>
-            <Form className="flex w-96 flex-col gap-4" onSubmit={onSubmit}>
+            <Form className="flex w-96 flex-col gap-4" onSubmit={handleForgotPassword}>
                 <TextField
                     isRequired
                     name="email"
@@ -24,7 +38,7 @@ const ForgotPasswordPage = () => {
                     }}
                 >
                     <Label>Email</Label>
-                    <Input placeholder="john@example.com" />
+                    <Input type="email" placeholder="john@example.com" aria-label="Email Address" />
                     <FieldError />
                 </TextField>
 
